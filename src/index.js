@@ -2,12 +2,24 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import GetProduct from './Product/GetProduct'
+import ProdutosCat from './Product/ProdutosCat'
+import GetProductId from './Product/GetProductId'
+import GetCategoria from './Categoria/GetCategoria'
 import * as serviceWorker from './serviceWorker';
+import { BrowserRouter, Switch, Route  } from 'react-router-dom';
+
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <BrowserRouter>
+    <Switch>
+      <Route path="/" exact={true} component={App} />
+      <Route path="/produto" exact={true} component ={GetProduct} />
+      <Route path="/produto/:id" exact={true} component ={GetProductId} />
+      <Route path="/categoria" exact={true} component ={GetCategoria} />
+      <Route path="/produtoscat/:id" exact={true} component ={ProdutosCat} />
+    </Switch>
+  </BrowserRouter>,
   document.getElementById('root')
 );
 
