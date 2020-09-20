@@ -38,4 +38,4 @@ function GetProduct (){
     )
 
 }
-export default GetProduct
+export default GetProduct;
