@@ -6,6 +6,8 @@ import GetProduct from './Product/GetProduct'
 import ProdutosCat from './Product/ProdutosCat'
 import GetProductId from './Product/GetProductId'
 import GetCategoria from './Categoria/GetCategoria'
+import GetCliente from './Cliente/GetCliente'
+import GetClienteId from './Cliente/GetClienteId'
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter, Switch, Route  } from 'react-router-dom';
 
@@ -18,6 +20,8 @@ ReactDOM.render(
       <Route path="/produto/:id" exact={true} component ={GetProductId} />
       <Route path="/categoria" exact={true} component ={GetCategoria} />
       <Route path="/produtoscat/:id" exact={true} component ={ProdutosCat} />
+      <Route path="/cliente" exact={true} component ={GetCliente} />
+      <Route path="/cliente/:id" exact={true} component ={GetClienteId} />
     </Switch>
   </BrowserRouter>,
   document.getElementById('root')
