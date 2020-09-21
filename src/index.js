@@ -5,11 +5,14 @@ import App from './App';
 import GetProduct from './Product/GetProduct'
 import ProdutosCat from './Product/ProdutosCat'
 import GetProductId from './Product/GetProductId'
+import GetProductIdFoto from './Product/GetProductIdFoto'
 import GetCategoria from './Categoria/GetCategoria'
 import GetCliente from './Cliente/GetCliente'
 import GetClienteId from './Cliente/GetClienteId'
 import GetFuncionario from './Funcionario/GetFuncionario'
 import GetFuncionarioId from './Funcionario/GetFuncionarioId'
+import GetPedido from './Pedido/GetPedido'
+import GetPedidoId from './Pedido/GetPedidoId'
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter, Switch, Route  } from 'react-router-dom';
 
@@ -20,12 +23,15 @@ ReactDOM.render(
       <Route path="/" exact={true} component={App} />
       <Route path="/produto" exact={true} component ={GetProduct} />
       <Route path="/produto/:id" exact={true} component ={GetProductId} />
+      <Route path="/produto/:id" exact={true} component ={GetProductIdFoto} />
       <Route path="/categoria" exact={true} component ={GetCategoria} />
       <Route path="/produtoscat/:id" exact={true} component ={ProdutosCat} />
       <Route path="/cliente" exact={true} component ={GetCliente} />
       <Route path="/cliente/:id" exact={true} component ={GetClienteId} />
       <Route path="/funcionario" exact={true} component ={GetFuncionario} />
       <Route path="/funcionario/:id" exact={true} component ={GetFuncionarioId} />
+      <Route path="/pedido" exact={true} components = {GetPedido} />
+      <Route path="/pedido" exact={true} components = {GetPedidoId} />
     </Switch>
   </BrowserRouter>,
   document.getElementById('root')
