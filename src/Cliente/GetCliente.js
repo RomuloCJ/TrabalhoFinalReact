@@ -1,65 +1,64 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import api from '../Api/ApiUrl';
 import { Link } from 'react-router-dom';
 
 function GetCliente (){
     const [clientes, setClientes] = useState([]);
 
-    const getCliente = () => {
+    useEffect(() =>{
         api.get('cliente').then(response => {
             setClientes(response.data)
         })
-    }
-    getCliente()
+      }, [])
+      console.log(clientes)
     return (
             <div>
             <h1>Cliente</h1>
-            <li>
+            {clientes.map(cliente => (
+            <li key={cliente.id}>
                 <h2>
-                    Cpf: {clientes.cpf}
+                    Nome: <Link to={`/cliente/${cliente.id}`}>{cliente.nome}</Link>
                 </h2>
                 <h2>
-                    DataNascimento: {clientes.dataNascimento}
+                    Cpf: {cliente.cpf}
                 </h2>
                 <h2>
-                    E-mail: {clientes.email}
+                    DataNascimento: {cliente.dataNascimento}
                 </h2>
                 <h2>
-                    Endereço: {clientes.endereco}
+                    E-mail: {cliente.email}
                 </h2>
                     <li>
                         <h3>
-                            Bairro: {clientes.bairro}
+                            Bairro: {cliente.endereco.bairro}
                         </h3>
                         <h3>
-                            Cep: {clientes.cep}
+                            Cep: {cliente.endereco.cep}
                         </h3>
                         <h3>
-                            Cidade: {clientes.cidade}
+                            Cidade: {cliente.endereco.cidade}
                         </h3>
                         <h3>
-                            Complemento: {clientes.complemento}
+                            Complemento: {cliente.endereco.complemento}
                         </h3>
                         <h3>
-                            Estado: {clientes.valor}
+                            Estado: {cliente.endereco.estado}
                         </h3>
                         <h3>
-                            Número: {clientes.numero}
+                            Número: {cliente.endereco.numero}
                         </h3>
                         <h3>
-                            Rua: {clientes.rua}
+                            Rua: {cliente.endereco.rua}
                         </h3>
                     </li>
                 <h2>
-                    Id: {clientes.id}
+                    Id: {cliente.id}
                 </h2>
                 <h2>
-                    Nome: {clientes.nome}
-                </h2>
-                <h2>
-                    Usuario: {clientes.usuario}
+                    Usuario: {cliente.usuario}
                 </h2>
             </li>
+            ))}
             </div>
     )
 

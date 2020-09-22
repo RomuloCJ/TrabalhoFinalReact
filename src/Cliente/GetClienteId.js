@@ -2,11 +2,13 @@ import React, {useState, useEffect} from 'react';
 import api from '../Api/ApiUrl';
 
 function ClienteId (props){
-    const [clientes, setClientes] = useState([]);
+    const [cliente, setCliente] = useState([]);
+    const [endereco, setEndereco] = useState([]);
 
     const getCliente = (id) => {
         api.get(`cliente/${id} `).then(response => {
-            setClientes(response.data)
+            setCliente(response.data)
+            setEndereco(response.data.endereco)
         })
     }
     useEffect(() => {
@@ -19,48 +21,45 @@ function ClienteId (props){
         <h1>Cliente</h1>
         <li>
             <h2>
-                Cpf: {clientes.cpf}
+                Cpf: {cliente.cpf}
             </h2>
             <h2>
-                DataNascimento: {clientes.dataNascimento}
+                DataNascimento: {cliente.dataNascimento}
             </h2>
             <h2>
-                E-mail: {clientes.email}
+                E-mail: {cliente.email}
+            </h2>
+            <li>
+                <h3>
+                    Bairro: {endereco.bairro}
+                </h3>
+                <h3>
+                     Cep: {endereco.cep}
+                </h3>
+                <h3>
+                    Cidade: {endereco.cidade}
+                </h3>
+                <h3>
+                    Complemento: {endereco.complemento}
+                </h3>
+                 <h3>
+                    Estado: {endereco.estado}
+                </h3>
+                <h3>
+                    Número: {endereco.numero}
+                </h3>
+                <h3>
+                    Rua: {endereco.rua}
+                </h3>
+            </li> 
+            <h2>
+                Id: {cliente.id}
             </h2>
             <h2>
-                Endereço: {clientes.endereco}
-            </h2>
-                <li>
-                    <h3>
-                        Bairro: {clientes.bairro}
-                    </h3>
-                    <h3>
-                        Cep: {clientes.cep}
-                    </h3>
-                    <h3>
-                        Cidade: {clientes.cidade}
-                    </h3>
-                    <h3>
-                        Complemento: {clientes.complemento}
-                    </h3>
-                    <h3>
-                        Estado: {clientes.valor}
-                    </h3>
-                    <h3>
-                        Número: {clientes.numero}
-                    </h3>
-                    <h3>
-                        Rua: {clientes.rua}
-                    </h3>
-                </li>
-            <h2>
-                Id: {clientes.id}
+                Nome: {cliente.nome}
             </h2>
             <h2>
-                Nome: {clientes.nome}
-            </h2>
-            <h2>
-                Usuario: {clientes.usuario}
+                Usuario: {cliente.usuario}
             </h2>
         </li>
         </div>
