@@ -18,19 +18,19 @@ function GetPedido (){
         
         <li>
             <h2>
-                Data do pedido: {pedido.dataPedido}
+                Data do pedido: {pedidos.dataPedido}
             </h2>
             <h2>
-                Id do pedido: {pedido.id}
+                Id do pedido: {pedidos.id}
             </h2>
             <h2>
-                Id do Cliente: {pedido.idCliente}
+                Id do Cliente: {pedidos.idCliente}
             </h2>
             <h2>
-                Nome do cliente: {pedido.nomeCliente}
+                Nome do cliente: {pedidos.nomeCliente}
             </h2>
             <h2>
-                Status do Pedido: R$ {pedido.pedidoStatus}
+                Status do Pedido: R$ {pedidos.pedidoStatus}
             </h2>
             
         </li>

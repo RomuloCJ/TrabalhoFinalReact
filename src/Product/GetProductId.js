@@ -5,19 +5,26 @@ function ProductId (props){
     const [produtos, setProdutos] = useState([]);
 
     const getProduto = (id) => {
-        api.get(`produto/${id} `).then(response => {
-            setProdutos(response.data)
+        api.get('produto').then(response => {
+            setProdutos(response.data.filter(produto => produto.id == id)[0])
+            console.log(response.data.filter(produto => produto.id == id)[0])
         })
+        // api.get(`produto/${id} `).then(response => {
+        //     setProdutos(response.data)
+        //     console.log(response.data)
+        // })
     }
     useEffect(() => {
         const {id} = props.match.params
         getProduto(id)
     },[])
+
     return (
             <div>
             <h1>Produto</h1>
             <li>
                 <h2>
+                    {console.log(produtos)}
                     Nome: {produtos.nome}
                 </h2>
                 <h2>
@@ -29,6 +36,7 @@ function ProductId (props){
                 <h2>
                     Valor: {produtos.valor}
                 </h2>
+                <img src={`${produtos.fotoLink}`} />
             </li>
             </div>
     )

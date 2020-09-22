@@ -1,19 +1,16 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import api from '../Api/ApiUrl';
 import { Link } from 'react-router-dom';
-
-
-
 
 function GetProduct (){
     const [produtos, setProdutos] = useState([]);
 
-    const getProduto = () => {
+    useEffect(() =>{
         api.get('produto').then(response => {
             setProdutos(response.data)
+            console.log(response.data)
         })
-    }
-    getProduto()
+      }, [])
     return (
             <div>
             <h1>Listar os Produtos</h1>
@@ -31,7 +28,7 @@ function GetProduct (){
                 <h2>
                     Valor: R$ {produto.valor}
                 </h2>
-                
+                <Link to={`/produto/foto/${produto.id}`}><img src={`${produto.fotoLink}`} /></Link>
             </li>
             ))}
             </div>

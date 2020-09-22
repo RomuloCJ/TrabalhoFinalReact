@@ -2,12 +2,16 @@ import React, {useState, useEffect} from 'react';
 import api from '../Api/ApiUrl';
 
 function ProductIdFoto (props){
-    const [produtos, setProdutos] = useState([]);
+    const [produto, setProduto] = useState([]);
 
     const getProdutoFoto = (id) => {
-        api.get(`produto/${id} `).then(response => {
-            setProdutos(response.data)
+        api.get('produto').then(response => {
+            setProduto(response.data.filter(produto => produto.id == id)[0])
+            console.log(response.data.filter(produto => produto.id == id)[0])
         })
+        // api.get(`produto`).then(response => {
+        //     setProduto(response.data)
+        // })
     }
     useEffect(() => {
         const {id} = props.match.params
@@ -15,9 +19,7 @@ function ProductIdFoto (props){
     },[])
     return (
             <div>
-            <h1>Foto do Produto</h1>
-            
-                <img src={} alt={Cadeira } />
+            <img src={`${produto.fotoLink}`}></img>
             </div>
     )
 
