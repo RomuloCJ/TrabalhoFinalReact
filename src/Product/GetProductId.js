@@ -5,10 +5,6 @@ function ProductId (props){
     const [produtos, setProdutos] = useState([]);
 
     const getProduto = (id) => {
-        // api.get('produto').then(response => {
-        //     setProdutos(response.data.filter(produto => produto.id == id)[0])
-        //     console.log(response.data.filter(produto => produto.id == id)[0])
-        // })
         api.get(`produto/${id} `).then(response => {
             setProdutos(response.data)
             console.log(response.data)

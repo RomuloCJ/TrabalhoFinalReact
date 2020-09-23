@@ -1,5 +1,6 @@
 import React, {Component, useEffect, useState} from 'react';
 import api from '../Api/ApiUrl';
+import * as yup from 'yup'
 
 
 
@@ -13,6 +14,35 @@ function PostProduct() {
     idFuncionario: 0,
     idCategoria: 0,
   }
+  const contactSchema = yup.object().shape({  
+    nome: yup
+    .string()
+    .min(6, 'O nome deve ter no minimo 6 caracteres')
+    .required('Preencha o Campo de Nome'),
+    descricao: yup
+    .string()
+    .min(10, 'A descrição tem que ter ao menos 10 caracteres')
+    .required(),
+    qtdEstoque: yup
+    .number()
+    .integer()
+    .min(1, 'Você precisa ter pelo menos 1 produto em estoque para vende-lo')
+    .required('A quantidade em estoque deve ser preeenchida'),
+    valor: yup
+    .number()
+    .positive()
+    .required('O valor deve ser preenchido'),
+    idFuncionario: yup
+    .number()
+    .min(1)
+    .integer()
+    .required('o Id do funcionario deve ser preenchido'),
+    idCategoria: yup
+    .number()
+    .min(1)
+    .integer()
+    .required('o Id da Categoria deve ser preenchido')
+  });
 
   const handleNomeChange= (event) => {
     produtosTemp.nome = event.target.value
@@ -55,12 +85,16 @@ function PostProduct() {
 
   const handleSubmit = (event) => {
       event.preventDefault()
-      setProduto(produtosTemp)
+      contactSchema.isValid(produtosTemp).then(valid =>{
+        if(valid){
+          setProduto(produtosTemp)
+        }
+      })
       event.target.reset()
 
   }
     return (
-        <form onSubmit={handleSubmit}>
+        <form validationSchema={contactSchema} onSubmit={handleSubmit}>
           <div>
           <label>
             Nome:

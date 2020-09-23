@@ -5,13 +5,14 @@ function ProductIdFoto (props){
     const [produto, setProduto] = useState([]);
 
     const getProdutoFoto = (id) => {
-        api.get('produto').then(response => {
-            setProduto(response.data.filter(produto => produto.id == id)[0])
-            console.log(response.data.filter(produto => produto.id == id)[0])
-        })
-        // api.get(`produto`).then(response => {
-        //     setProduto(response.data)
+        // api.get('produto').then(response => {
+        //     setProduto(response.data.filter(produto => produto.id == id)[0])
+        //     console.log(response.data.filter(produto => produto.id == id)[0])
         // })
+        api.get(`produto/${id}/foto`).then(response => {
+            setProduto(response.data)
+            console.log(response.data)
+        })
     }
     useEffect(() => {
         const {id} = props.match.params
