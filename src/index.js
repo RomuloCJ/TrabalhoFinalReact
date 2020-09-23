@@ -9,6 +9,7 @@ import GetCategoria from './Categoria/GetCategoria'
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter, Switch, Route  } from 'react-router-dom';
 import PostProduct from './Product/PostProduct';
+import PutProduct from './Product/PutProductId';
 
 
 ReactDOM.render(
@@ -20,6 +21,7 @@ ReactDOM.render(
       <Route path="/produto/foto/:id" exact={true} component ={GetProductIdFoto} />
       <Route path="/produtoadicionar" exact={true} component ={PostProduct} />
       <Route path="/categoria" exact={true} component ={GetCategoria} />
+      <Route path="/produto/:id" exact={true} component = {PutProduct} />
     </Switch>
   </BrowserRouter>,
   document.getElementById('root')
