@@ -24,9 +24,9 @@ ReactDOM.render(
       <Route path="/produto" exact={true} component ={GetProduct} />
       <Route path="/produto/:id" exact={true} component ={GetProductId} />
       <Route path="/produto/foto/:id" exact={true} component ={GetProductIdFoto} />
-      <Route path="/produtoadicionar" exact={true} component ={PostProduct} />
+      <Route path="/produtoadicionar/" exact={true} component ={PostProduct} />
       <Route path="/categoria" exact={true} component ={GetCategoria} />
-      <Route path="/produto/:id" exact={true} component = {PutProduct} />
+      <Route path="/produtomodificar/:id" exact={true} component = {PutProduct} />
       <Route path="/categoria/:id" exact={true} component ={GetCategoriaId} />
       <Route path="/categoriaadicionar" exact={true} component ={PostCategoria} />
       <Route path="/cliente" exact={true} component ={GetCliente} />

@@ -40,6 +40,7 @@ function PostProduct() {
   }
 
    useEffect(() =>{
+     if(produto.length != 0){
      api.post('produto', produto)
      .then((res) => {
        alert("Cadastro Efetuado")
@@ -49,6 +50,7 @@ function PostProduct() {
       alert("Deu algum erro no preenchimento")
        console.log(res)
      })
+     }
    }, [produto])
 
   const handleSubmit = (event) => {

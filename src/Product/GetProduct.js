@@ -28,6 +28,9 @@ function GetProduct (){
                 <h2>
                     Valor: R$ {produto.valor}
                 </h2>
+                <div>
+                <Link to={`/produtomodificar/${produto.id}`}> Modificar Produto</Link>
+                </div>
                 <Link to={`/produto/foto/${produto.id}`}><img src={`${produto.fotoLink}`} /></Link>
             </li>
             ))}
