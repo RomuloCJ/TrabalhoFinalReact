@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import api from '../Api/ApiUrl';
 import { Link } from 'react-router-dom';
+import Delete from '../Delete';
 
 function GetFuncionario (){
     const [funcionarios, setFuncionarios] = useState([]);
@@ -19,6 +20,13 @@ function GetFuncionario (){
         <li key={funcionario.id}>
             <h2>
                 Cpf: <Link to={`/funcionario/${funcionario.id}`}>{funcionario.cpf}</Link>
+                <Delete type={'funcionario'}
+                id={funcionario.id}
+                data={funcionarios}
+                setData={setFuncionarios}            
+                
+                />
+
             </h2>
             <h2>
                 Id: {funcionario.id}
