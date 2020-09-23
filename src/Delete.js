@@ -9,6 +9,7 @@ function Delete (props) {
         api.delete (`${type}/${id}`).then((response) => {
           const listaFiltrada=data.filter (item => item.id !== id)  
           setData(listaFiltrada)
+          alert("Apagado com sucesso!")
         }  )
     }
     return (
