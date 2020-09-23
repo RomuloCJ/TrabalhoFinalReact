@@ -24,7 +24,7 @@ function App() {
     <Link to="/cliente/">Ver Cliente</Link>
     </div>
     <div>
-    <Link to="/clietenadicionar/">Adicionar Cliente</Link>
+    <Link to="/clienteadicionar/">Adicionar Cliente</Link>
     </div>
 
     </div>

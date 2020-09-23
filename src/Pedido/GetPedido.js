@@ -6,7 +6,7 @@ function GetPedido (){
     const [pedidos, setPedidos] = useState([]);
 
     const getPedido = () => {
-        api.get('cliente').then(response => {
+        api.get('pedido').then(response => {
             setPedidos(response.data)
         })
     }

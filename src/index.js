@@ -10,6 +10,7 @@ import GetCategoriaId from './Categoria/GetCategoriaId'
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter, Switch, Route  } from 'react-router-dom';
 import PostProduct from './Product/PostProduct';
+import PostCliente from './Cliente/PostCliente';
 import PostCategoria from './Categoria/PostCategoria';
 import GetCliente from './Cliente/GetCliente';
 import GetClienteId from './Cliente/GetClienteId';
@@ -28,6 +29,7 @@ ReactDOM.render(
       <Route path="/categoriaadicionar" exact={true} component ={PostCategoria} />
       <Route path="/cliente" exact={true} component ={GetCliente} />
       <Route path="/cliente/:id" exact={true} component ={GetClienteId} />
+      <Route path="/clienteadicionar" exact={true} component ={PostCliente} />
     </Switch>
   </BrowserRouter>,
   document.getElementById('root')
