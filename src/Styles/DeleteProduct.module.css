@@ -1,0 +1,13 @@
+.deleteProduct {
+  color: white;
+  position: absolute;
+  top: -0.5rem;
+  right: 0;
+  border-radius: 1rem;
+  padding: 1rem;
+  background-color: rgb(33, 192, 192);
+}
+.deleteProduct:hover {
+  box-shadow: 5px 5px 5px -5px black;
+  color: blue;
+}

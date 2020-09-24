@@ -1,10 +1,14 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import api from '../Api/ApiUrl';
+import styles from "../Styles/PostProduct.module.css";
+import { format } from 'date-fns';
+
 
 
 function PutProduct(props) {
   const [produto, setProduto] = useState([]);
   const [pegar, setPegar] = useState([]);
+
 
 
   const getProduto = (id) => {
@@ -19,6 +23,7 @@ function PutProduct(props) {
     descricao: "",
     qtdEstoque: 0,
     valor: 0,
+    dataFabricacao: 0
   }
 
   const handleDescricaoChange= (event) => {
@@ -40,8 +45,15 @@ function PutProduct(props) {
   const handleValorChange= (event) => {
     produtosTemp.valor = event.target.value
   }
+  const handleDataChange= (event) => {
+    produtosTemp.dataFabricacao = event.target.value
+  }
+  const isInitialMount = useRef(true);
 
   const putProduto = (id) => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+    } else {
     api.put(`produto/${id}`, produto)
     .then((res) => {
       console.log(res.data);
@@ -51,6 +63,7 @@ function PutProduct(props) {
       alert("Não foi possível atualizar o produto!")
       console.log(res)
     })
+  }
   } 
 
  useEffect(() =>{
@@ -76,6 +89,10 @@ function PutProduct(props) {
     if(produtosTemp.idFuncionario != pegar.idFuncionario){
       alert("Só o funcionario que cadastrou o produto pode alterá-lo")
     }else{
+      var data = Date.now()
+      const formattedDate = format(data, "yyyy-MM-dd'T'HH:mm:ss'Z'");
+      produtosTemp.dataFabricacao = formattedDate
+      console.log(produtosTemp.dataFabricacao)
       setProduto(produtosTemp)
       event.target.reset()
     }
@@ -83,41 +100,49 @@ function PutProduct(props) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>  
-        <label>            
-		      Nome:            
-		      <input  type="string"  placeholder="Insira o Nome" onChange={handleNomeChange}/>
-        </label>
-      </div>
-      <div>  
-        <label>            
-		      Descrição:            
-		      <input  type="string"  placeholder="Insira a Descrição" onChange={handleDescricaoChange}/>
-        </label>
-      </div>
-      <div>
-        <label>            
-		      ID do funcionario que está alterando:          
-		      <input  type="number" placeholder="Insira o ID do Funcionario" onChange={handleIdFuncionarioChange}/>          
-	      </label> 
-      </div>
-      <div>
-        <label>            
-		      Quantidade em Estoque:            
-		      <input  type="number" placeholder="Insira quantidade em Estoque" onChange={handleQuantidadeChange}/>          
-	      </label> 
-      </div>
-      <div>
-        <label>            
-		      Valor:            
-		      <input  type="number" placeholder="Insira o valor do Produto" onChange={handleValorChange}/>          
-	      </label>
-      </div> 
-      <div>
-          <input type="submit" value="Send" />
-      </div>
-    </form>    
+    <div className={styles.wrapper}>
+    <form className={styles.form} onSubmit={handleSubmit}>
+      <label className={styles.label}>Nome:</label>
+      <input
+        className={styles.input}
+        type="text"
+        placeholder="Insira o nome do Produto"
+        onChange={handleNomeChange}
+      />
+      <label className={styles.label}>Descrição:</label>
+      <input
+        className={styles.input}
+        type="text"
+        placeholder="Insira a descrição"
+        onChange={handleDescricaoChange}
+      />
+      <label className={styles.label}>Quantidade:</label>
+      <input
+        className={styles.input}
+        type="number"
+        placeholder="1"
+        min="1"
+        onChange={handleQuantidadeChange}
+      />
+      <label className={styles.label}>Valor:</label>
+      <input
+        className={styles.input}
+        type="number"
+        onChange={handleValorChange}
+        min="0"
+        step=".01"
+      />
+      <label className={styles.label}>Id do Funcionario:</label>
+      <input
+        className={styles.input}
+        type="number"
+        onChange={handleIdFuncionarioChange}
+        min="0"
+        required
+      />
+      <input className={styles.btn} type="submit" value="Send" />
+    </form>
+  </div>
   )
 }
 export default PutProduct;

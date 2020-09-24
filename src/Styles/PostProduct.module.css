@@ -1,0 +1,44 @@
+.form {
+  background-color: white;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  padding: 1rem;
+  width: 600px;
+  max-width: 1200px;
+  border-radius: 1rem;
+
+  box-shadow: 5px 5px 5px -5px black;
+}
+
+.input {
+  padding: 1rem;
+  width: 70%;
+}
+
+.input:hover {
+  outline: none;
+  box-shadow: 5px 5px 5px -5px black;
+}
+
+.input:focus {
+  outline: none;
+
+  box-shadow: 5px 5px 5px -5px black;
+}
+
+.btn {
+  padding: 1rem;
+  margin: 0.5rem 0;
+}
+
+.label {
+  padding: 0.5rem;
+}
+
+.wrapper {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
